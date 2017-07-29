@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextureView
+        android:id="@+id/textureViewCamera"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_margin="8dp">
+
+        <Button
+            android:id="@+id/buttonCapture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Capture" />
+
+        <Button
+            android:id="@+id/buttonFocus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Focus" />
+
+        <ToggleButton
+            android:id="@+id/toggleButtonFlash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textOff="Flash Off"
+            android:textOn="Flash On" />
+
+    </LinearLayout>
+
+</FrameLayout>
