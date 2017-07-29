@@ -4,4 +4,9 @@
     <string name="camera_api_v2">Camera API v2</string>
     <string name="camera_and_write_external_storage_denied">Please allow camera and write external storage permission to use this app.</string>
     <string name="negative_color_effect_unavailable">Negative color effect is unavailable on this devices</string>
+    <string name="camera_api_v2_unavailable">Camera API v2 is available for API 21 or above only.</string>
+    <string name="negative_on">Negative On</string>
+    <string name="negative_off">Negative Off</string>
+    <string name="focus">Focus</string>
+    <string name="capture">Capture</string>
 </resources>

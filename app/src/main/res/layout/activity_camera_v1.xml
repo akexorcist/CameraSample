@@ -18,20 +18,20 @@
             android:id="@+id/buttonCapture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Capture" />
+            android:text="@string/capture" />
 
         <Button
             android:id="@+id/buttonFocus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Focus" />
+            android:text="@string/focus" />
 
         <ToggleButton
             android:id="@+id/toggleButtonFlash"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textOff="Flash Off"
-            android:textOn="Flash On" />
+            android:textOff="@string/negative_off"
+            android:textOn="@string/negative_on" />
 
     </LinearLayout>
 
