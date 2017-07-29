@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import com.akexorcist.cameraapi.CameraUtil;
 import com.akexorcist.cameraapi.R;
 
 import java.io.File;
@@ -23,8 +22,8 @@ import java.util.List;
  * Created by Akexorcist on 7/28/2017 AD.
  */
 
-public class CameraApiV1Activity extends AppCompatActivity implements TextureView.SurfaceTextureListener {
-    private static final String TAG = CameraApiV1Activity.class.getSimpleName();
+public class CameraV1Activity extends AppCompatActivity implements TextureView.SurfaceTextureListener {
+    private static final String TAG = CameraV1Activity.class.getSimpleName();
 
     private int cameraId = Camera.CameraInfo.CAMERA_FACING_BACK;
 
@@ -93,15 +92,15 @@ public class CameraApiV1Activity extends AppCompatActivity implements TextureVie
     }
 
     private void setupCamera(int width, int height) {
-        camera = CameraUtil.openCamera(cameraId);
+        camera = CameraV1Util.openCamera(cameraId);
         Camera.Parameters parameters = camera.getParameters();
-        Camera.Size bestPreviewSize = CameraUtil.getBestPreviewSize(parameters.getSupportedPreviewSizes(), width, height);
+        Camera.Size bestPreviewSize = CameraV1Util.getBestPreviewSize(parameters.getSupportedPreviewSizes(), width, height);
         parameters.setPreviewSize(bestPreviewSize.width, bestPreviewSize.height);
-        Camera.Size bestPictureSize = CameraUtil.getBestPictureSize(parameters.getSupportedPictureSizes());
+        Camera.Size bestPictureSize = CameraV1Util.getBestPictureSize(parameters.getSupportedPictureSizes());
         parameters.setPictureSize(bestPictureSize.width, bestPictureSize.height);
         camera.setParameters(parameters);
-        camera.setDisplayOrientation(CameraUtil.getCameraDisplayOrientation(this, cameraId));
-        textureViewCamera.setTransform(CameraUtil.getCropCenterScaleMatrix(width, height, bestPreviewSize.width, bestPreviewSize.height));
+        camera.setDisplayOrientation(CameraV1Util.getCameraDisplayOrientation(this, cameraId));
+        textureViewCamera.setTransform(CameraV1Util.getCropCenterScaleMatrix(width, height, bestPreviewSize.width, bestPreviewSize.height));
     }
 
     private void startCameraPreview(SurfaceTexture surfaceTexture) {
@@ -127,10 +126,10 @@ public class CameraApiV1Activity extends AppCompatActivity implements TextureVie
                 null,
                 null,
                 (data, camera) -> {
-                    File file = CameraUtil.savePicture(data);
-                    int orientation = CameraUtil.getCameraDisplayOrientation(this, cameraId);
-                    CameraUtil.setImageOrientation(file, orientation);
-                    CameraUtil.updateMediaScanner(this, file);
+                    File file = CameraV1Util.savePicture(data);
+                    int orientation = CameraV1Util.getCameraDisplayOrientation(this, cameraId);
+                    CameraV1Util.setImageOrientation(file, orientation);
+                    CameraV1Util.updateMediaScanner(this, file);
                 });
     }
 

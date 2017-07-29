@@ -2,13 +2,14 @@ package com.akexorcist.cameraapi;
 
 import android.Manifest;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.akexorcist.cameraapi.v1.CameraApiV1Activity;
-import com.akexorcist.cameraapi.v2.CameraApiV2Activity;
+import com.akexorcist.cameraapi.v1.CameraV1Activity;
+import com.akexorcist.cameraapi.v2.CameraV2Activity;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
@@ -57,8 +58,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupView() {
-        btnCameraApiV1.setOnClickListener(view -> openActivity(CameraApiV1Activity.class));
-        btnCameraApiV2.setOnClickListener(view -> openActivity(CameraApiV2Activity.class));
+        btnCameraApiV1.setOnClickListener(view -> openActivity(CameraV1Activity.class));
+        btnCameraApiV2.setOnClickListener(view -> {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                openActivity(CameraV2Activity.class);
+            } else {
+                Toast.makeText(this, R.string.camera_api_v2_unavailable, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void openActivity(Class<?> cls) {

@@ -1,4 +1,4 @@
-package com.akexorcist.cameraapi;
+package com.akexorcist.cameraapi.v1;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,8 +13,6 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.Surface;
 
-import com.akexorcist.cameraapi.v1.CameraApiV1Activity;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -27,8 +25,8 @@ import java.util.Locale;
  * Created by Akexorcist on 7/28/2017 AD.
  */
 
-public class CameraUtil {
-    private static final String TAG = CameraApiV1Activity.class.getSimpleName();
+public class CameraV1Util {
+    private static final String TAG = CameraV1Activity.class.getSimpleName();
 
     public static boolean isCameraSupport(Context context) {
         return context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA);

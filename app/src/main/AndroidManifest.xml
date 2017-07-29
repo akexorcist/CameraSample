@@ -28,8 +28,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".v1.CameraApiV1Activity" />
-        <activity android:name=".v2.CameraApiV2Activity" />
+        <activity android:name=".v1.CameraV1Activity" />
+        <activity android:name=".v2.CameraV2Activity" />
     </application>
 
 </manifest>
