@@ -98,6 +98,9 @@ public class CameraV1Activity extends AppCompatActivity implements TextureView.S
         parameters.setPreviewSize(bestPreviewSize.width, bestPreviewSize.height);
         Camera.Size bestPictureSize = CameraV1Util.getBestPictureSize(parameters.getSupportedPictureSizes());
         parameters.setPictureSize(bestPictureSize.width, bestPictureSize.height);
+        if (CameraV1Util.isContinuousFocusModeSupported(parameters.getSupportedFocusModes())) {
+            parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO);
+        }
         camera.setParameters(parameters);
         camera.setDisplayOrientation(CameraV1Util.getCameraDisplayOrientation(this, cameraId));
         textureViewCamera.setTransform(CameraV1Util.getCropCenterScaleMatrix(width, height, bestPreviewSize.width, bestPreviewSize.height));

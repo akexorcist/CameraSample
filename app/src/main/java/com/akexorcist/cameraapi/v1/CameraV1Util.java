@@ -86,6 +86,17 @@ public class CameraV1Util {
         return bestPreviewSize;
     }
 
+    public static boolean isContinuousFocusModeSupported(List<String> supportedFocusModes) {
+        if (supportedFocusModes != null && !supportedFocusModes.isEmpty()) {
+            for (String focusMode : supportedFocusModes) {
+                if (focusMode != null && focusMode.equalsIgnoreCase(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public static int getCameraDisplayOrientation(Activity activity, int cameraId) {
         Camera.CameraInfo cameraInfo = new Camera.CameraInfo();
         Camera.getCameraInfo(cameraId, cameraInfo);
