@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.akexorcist.cameraapi.v1
 
 import android.app.Activity
