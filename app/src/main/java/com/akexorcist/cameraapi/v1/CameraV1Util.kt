@@ -47,7 +47,7 @@ object CameraV1Util {
     }
 
     fun getCameraDisplayOrientation(activity: Activity, cameraId: Int): Int {
-        val cameraInfo = Camera.CameraInfo()
+        val cameraInfo: Camera.CameraInfo = Camera.CameraInfo()
         Camera.getCameraInfo(cameraId, cameraInfo)
         val rotation = activity.windowManager.defaultDisplay.rotation
         val degree = getSurfaceRotation(rotation)
@@ -74,7 +74,11 @@ object CameraV1Util {
         }
     }
 
-    fun getBestPreviewSize(supportedSizeList: List<Camera.Size>?, width: Int, height: Int): Camera.Size? {
+    fun getBestPreviewSize(
+        supportedSizeList: List<Camera.Size>?,
+        width: Int,
+        height: Int
+    ): Camera.Size? {
         val bestSize: Pair<Int, Int>? = getBestPreviewSize(supportedSizeList?.map { size -> Pair(size.width, size.height) }, width, height)
         return bestSize?.let {
             supportedSizeList?.find { size -> size.width == bestSize.first && size.height == bestSize.second }
@@ -83,7 +87,11 @@ object CameraV1Util {
         }
     }
 
-    internal fun getBestPreviewSize(supportedSizeList: List<Pair<Int, Int>>?, width: Int, height: Int): Pair<Int, Int>? = getBestSize(
+    internal fun getBestPreviewSize(
+        supportedSizeList: List<Pair<Int, Int>>?,
+        width: Int,
+        height: Int
+    ): Pair<Int, Int>? = getBestSize(
         supportedSizeList = supportedSizeList,
         width = width,
         height = height,
@@ -96,7 +104,11 @@ object CameraV1Util {
         }
     )
 
-    fun getBestPictureSize(supportedSizeList: List<Camera.Size>?, width: Int, height: Int): Camera.Size? {
+    fun getBestPictureSize(
+        supportedSizeList: List<Camera.Size>?,
+        width: Int = Int.MAX_VALUE,
+        height: Int = Int.MAX_VALUE
+    ): Camera.Size? {
         val bestSize: Pair<Int, Int>? = getBestPictureSize(supportedSizeList?.map { size -> Pair(size.width, size.height) }, width, height)
         return bestSize?.let {
             supportedSizeList?.find { size -> size.width == bestSize.first && size.height == bestSize.second }
@@ -105,7 +117,11 @@ object CameraV1Util {
         }
     }
 
-    internal fun getBestPictureSize(supportedSizeList: List<Pair<Int, Int>>?, width: Int, height: Int): Pair<Int, Int>? = getBestSize(
+    internal fun getBestPictureSize(
+        supportedSizeList: List<Pair<Int, Int>>?,
+        width: Int,
+        height: Int
+    ): Pair<Int, Int>? = getBestSize(
         supportedSizeList = supportedSizeList,
         width = width,
         height = height,
@@ -179,7 +195,12 @@ object CameraV1Util {
         return Pair(scaleX, scaleY)
     }
 
-    private fun createScaleMatrix(scaleX: Float, scaleY: Float, width: Float, height: Float): Matrix {
+    private fun createScaleMatrix(
+        scaleX: Float,
+        scaleY: Float,
+        width: Float,
+        height: Float
+    ): Matrix {
         return Matrix().apply {
             setScale(scaleX, scaleY, width / 2, height / 2)
         }

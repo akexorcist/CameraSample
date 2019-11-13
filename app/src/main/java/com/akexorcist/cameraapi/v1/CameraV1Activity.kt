@@ -32,7 +32,7 @@ class CameraV1Activity : AppCompatActivity() {
 
         buttonCapture.setOnClickListener { takePicture() }
         buttonFocus.setOnClickListener { refocus() }
-        toggleButtonFlash.setOnCheckedChangeListener { _, isChecked -> toggleNegativeColor(isChecked) }
+        toggleButtonNegativeColor.setOnCheckedChangeListener { _, isChecked -> toggleNegativeColor(isChecked) }
         textureViewCamera.surfaceTextureListener = surfaceTextureListener
     }
 
@@ -105,7 +105,7 @@ class CameraV1Activity : AppCompatActivity() {
                     )
                 )
             }
-            CameraV1Util.getBestPictureSize(parameters.supportedPictureSizes, 4000, 3000)?.let { pictureSize: Camera.Size ->
+            CameraV1Util.getBestPictureSize(parameters.supportedPictureSizes)?.let { pictureSize: Camera.Size ->
                 parameters.setPictureSize(pictureSize.width, pictureSize.height)
             }
             if (CameraV1Util.isContinuousFocusModeSupported(parameters.supportedFocusModes)) {

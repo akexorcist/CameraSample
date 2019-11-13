@@ -27,7 +27,7 @@
             android:text="@string/focus" />
 
         <ToggleButton
-            android:id="@+id/toggleButtonFlash"
+            android:id="@+id/toggleButtonNegativeColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textOff="@string/negative_off"
