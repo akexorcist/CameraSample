@@ -24,19 +24,18 @@ object CameraV1Util {
         try {
             return Camera.open()
         } catch (e: RuntimeException) {
-            e.printStackTrace()
+            Log.e(TAG, "Error open camera: " + e.message)
         }
         return null
     }
 
     fun openCamera(cameraId: Int): Camera? {
-        var camera: Camera? = null
         try {
-            camera = Camera.open(cameraId)
+            return Camera.open(cameraId)
         } catch (e: RuntimeException) {
             Log.e(TAG, "Error open camera: " + e.message)
         }
-        return camera
+        return null
     }
 
     fun isCameraSupport(context: Context): Boolean {
