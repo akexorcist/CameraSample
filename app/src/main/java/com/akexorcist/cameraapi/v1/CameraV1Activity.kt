@@ -91,7 +91,7 @@ class CameraV1Activity : AppCompatActivity() {
         camera?.let { camera: Camera ->
             val cameraOrientation = CameraV1Util.getCameraDisplayOrientation(this, cameraId)
             camera.setDisplayOrientation(cameraOrientation)
-            val parameters = camera.parameters
+            val parameters: Camera.Parameters = camera.parameters
             val bestPreviewSize: Camera.Size? = CameraV1Util.getBestPreviewSize(parameters.supportedPreviewSizes, width, height)
             bestPreviewSize?.let { previewSize: Camera.Size ->
                 parameters.setPreviewSize(previewSize.width, previewSize.height)
