@@ -9,4 +9,7 @@
     <string name="negative_off">Negative Off</string>
     <string name="focus">Focus</string>
     <string name="capture">Capture</string>
+    <string name="camera_unavailable">Camera is unavailable</string>
+    <string name="photo_saved">Photo saved in %1$s</string>
+    <string name="unable_save_photo">Unable to save photo</string>
 </resources>
