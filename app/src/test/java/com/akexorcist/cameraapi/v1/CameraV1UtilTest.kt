@@ -281,6 +281,31 @@ class CameraV1UtilTest {
     }
 
     @Test
+    fun `Get best portrait preview size in portrait size supported with landscape result 2`() {
+        val cameraSize = listOf(
+            Pair(2048, 1536),
+            Pair(1920, 1080),
+            Pair(1600, 1200),
+            Pair(1440, 1080),
+            Pair(1280, 960),
+            Pair(1280, 720),
+            Pair(1200, 1200),
+            Pair(1024, 768),
+            Pair(800, 600),
+            Pair(720, 480),
+            Pair(640, 480),
+            Pair(640, 360),
+            Pair(480, 360),
+            Pair(480, 320),
+            Pair(352, 288),
+            Pair(320, 240),
+            Pair(176, 144),
+            Pair(160, 120)
+        )
+        Assert.assertEquals(Pair(1920, 1080), CameraV1Util.getBestPreviewSize(cameraSize, 1080, 1689))
+    }
+
+    @Test
     fun `Get best preview size in with null camera size with null result`() {
         val cameraSize: List<Pair<Int, Int>>? = null
         Assert.assertEquals(null, CameraV1Util.getBestPreviewSize(cameraSize, 600, 600))
@@ -636,6 +661,18 @@ class CameraV1UtilTest {
         val previewHeight = 800.toFloat()
         val result: Pair<Float, Float> = CameraV1Util.getViewScale(viewWidth, viewHeight, previewWidth, previewHeight)
         val expect = Pair(1.toFloat(), 1.toFloat())
+        Assert.assertEquals(expect.first, result.first)
+        Assert.assertEquals(expect.second, result.second)
+    }
+
+    @Test
+    fun `Get crop center scale matrix with portrait view, landscape preview and view size is cross-cutting`() {
+        val viewWidth = 1080.toFloat()
+        val viewHeight = 1689.toFloat()
+        val previewWidth = 1920.toFloat()
+        val previewHeight = 1080.toFloat()
+        val result: Pair<Float, Float> = CameraV1Util.getViewScale(viewWidth, viewHeight, previewWidth, previewHeight)
+        val expect = Pair(2.780247.toFloat(), 1.toFloat())
         Assert.assertEquals(expect.first, result.first)
         Assert.assertEquals(expect.second, result.second)
     }

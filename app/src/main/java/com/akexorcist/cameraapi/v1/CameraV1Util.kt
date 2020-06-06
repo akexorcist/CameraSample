@@ -190,6 +190,7 @@ object CameraV1Util {
         if (previewRatio < viewRatio) {
             scaleX = 1.toFloat()
             scaleY = ((viewWidth * previewHeight) / previewWidth) / viewHeight
+//            scaleY = (previewWidth * previewHeight) / (viewHeight * viewWidth)
         } else {
             scaleX = ((previewWidth / previewHeight) * viewHeight) / viewWidth
             scaleY = 1.toFloat()
